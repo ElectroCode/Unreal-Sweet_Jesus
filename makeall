@@ -36,6 +36,7 @@ done
 #echo loadmodule \"src/modules/m_servlist.so\"\;
 #echo loadmodule \"src/modules/m_commandsno.so\"\;
 #echo loadmodule \"src/modules/m_chansno.so\"\;
+#echo loadmodule \"src/modules/m_forward.so\"\;
 #echo ----------------------
 #echo "Add these lines to your conf for loading modules"
 }

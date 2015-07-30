@@ -2,10 +2,11 @@ Unreal-Sweet_Jesus
 ==================
 
 Please make sure you enable: ssl, remote includes, ~&
-All customizations are to build on these being enabled
-Including all static configuration files are remote included, including set {}
+All customizations are to build on these being enabled.
+Including all static configuration files are
+remote included, including set {}
 
-If you don't you will not be able to link, and we won't let you link if you don't.
+''If you don't you will NOT BE ABLE TO LINK, and we won't let you link if you don't.''
 
 #Download
     git clone https://github.com/Iota-Spencer/Unreal-Sweet_Jesus

@@ -1,0 +1,43 @@
+#! /bin/bash
+# Script to make all the modules in this archive
+# after you 'make'd the rest
+forloop ()
+{
+MOD[0]="m_ircops"
+MOD[1]="m_listconnected"
+MOD[2]="m_uline"
+MOD[3]="m_textban"
+MOD[4]="m_chgswhois"
+MOD[5]="m_jumpserver"
+MOD[6]="m_rmtkl"
+MOD[7]="m_vhosts"
+MOD[8]="m_banlink"
+MOD[9]="m_commandsno"
+MOD[10]="m_servlist"
+MOD[11]="m_chansno"
+MOD[12]="m_forward"
+MODULES=${MOD[@]}
+for MODULE in $MODULES ; do
+  make custommodule MODULEFILE=$MODULE
+done
+
+#}
+#echostuff ()
+#{
+#echo loadmodule \"src/modules/m_chgswhois.so\"\;
+#echo loadmodule \"src/modules/m_jumpserver.so\"\;
+#echo loadmodule \"src/modules/m_textban.so\"\;
+#echo loadmodule \"src/modules/m_listconnected.so\"\;
+#echo loadmodule \"src/modules/m_ircops.so\"\;
+#echo loadmodule \"src/modules/m_uline.so\"\;
+#echo loadmodule \"src/modules/m_rmtkl.so\"\;
+#echo loadmodule \"src/modules/m_vhosts.so\"\;
+#echo loadmodule \"src/modules/m_banlink.so\"\;
+#echo loadmodule \"src/modules/m_servlist.so\"\;
+#echo loadmodule \"src/modules/m_commandsno.so\"\;
+#echo loadmodule \"src/modules/m_chansno.so\"\;
+#echo ----------------------
+#echo "Add these lines to your conf for loading modules"
+}
+forloop
+#echostuff

@@ -1,0 +1,11 @@
+**** Remote Includes ****
+
+Usually you can install curl when you get your vps/dedi or what have you, though most times, 
+it doesn't have libcurl, that is where curlinstall comes into play.
+
+Run ./curlinstall 
+then re ./Config and enable it.
+Due to how we have our conf, YOU MUST ENABLE REMOTE INCLUDES
+Don't make me smack you.
+Because I will...
+>_>

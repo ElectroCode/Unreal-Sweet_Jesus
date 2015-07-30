@@ -6,7 +6,7 @@ All customizations are to build on these being enabled.
 Including all static configuration files are
 remote included, including set {}
 
-''If you don't you will NOT BE ABLE TO LINK, and we won't let you link if you don't.''
+<b>If you don't you will NOT BE ABLE TO LINK, and we won't let you link if you don't.</b>
 
 #Download
     git clone https://github.com/Iota-Spencer/Unreal-Sweet_Jesus

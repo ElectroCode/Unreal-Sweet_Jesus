@@ -153,21 +153,21 @@ static int m_listconnected(aClient *cptr, aClient *sptr, int parc, char *parv[])
     int i;
     int UserCount = 0;
     for(i = 1; i < parc; i++) {
-      if(!strcasecmp(parv[i],"!global"))
+      if(!strcasecmp(parv[i],"-global"))
         RequiredServer = NULL;
-      if(!strcasecmp(parv[i],"!oper"))
+      if(!strcasecmp(parv[i],"-oper"))
         oper = 1;
-      if(!strcasecmp(parv[i],"!server") && i != parc-1)
+      if(!strcasecmp(parv[i],"-server") && i != parc-1)
         RequiredServer = parv[i+1];
-      if(!strcasecmp(parv[i],"!minchan") && i != parc-1)
+      if(!strcasecmp(parv[i],"-minchan") && i != parc-1)
         MinChan = strtol(parv[i+1],NULL,10);
-      if(!strcasecmp(parv[i],"!maxchan") && i != parc-1)
+      if(!strcasecmp(parv[i],"-maxchan") && i != parc-1)
         MaxChan = strtol(parv[i+1],NULL,10);
-      if(!strcasecmp(parv[i],"!nochan"))
+      if(!strcasecmp(parv[i],"-nochan"))
         MaxChan = 0;
-      if(!strcasecmp(parv[i],"!showchancount"))       ShowChanCount = 1;
-      if(!strcasecmp(parv[i],"!showrealhost"))        ShowRealHost = 1;
-      if(!strcasecmp(parv[i],"!showcloakedhost"))     ShowCloakedHost = 1;
+      if(!strcasecmp(parv[i],"-count"))       ShowChanCount = 1;
+      if(!strcasecmp(parv[i],"-rhost"))        ShowRealHost = 1;
+      if(!strcasecmp(parv[i],"-chost"))     ShowCloakedHost = 1;
       if(!strcasecmp(parv[i],"!showvirthost"))        ShowVirtHost = 1;
       if(!strcasecmp(parv[i],"!showserver"))          ShowServer = 1;
       if(!strcasecmp(parv[i],"!showumodes"))          ShowUmodes = 1;
@@ -217,39 +217,39 @@ static int m_listconnected(aClient *cptr, aClient *sptr, int parc, char *parv[])
       }
       if(!strcasecmp(parv[i],"!help")) {
         if(i == parc-1) {
-          sendto_one(sptr, ":%s %d %s :Criteria: !global !oper !server !minchan !maxchan !nochan !janusokay !ulinesokay", me.name, RPL_ENDOFIRCOPS, sptr->name);
-          sendto_one(sptr, ":%s %d %s :What to view: !showrealhost !showcloakedhost !showvirthost !showserver !showchanels !showchannels# !showumodes", me.name, RPL_ENDOFIRCOPS, sptr->name);
+          sendto_one(sptr, ":%s %d %s :Criteria: !global !oper !server !min !max !nochan !janusokay !ulinesokay", me.name, RPL_ENDOFIRCOPS, sptr->name);
+          sendto_one(sptr, ":%s %d %s :What to view: !rhost !chost !vrthost !showserver !showchanels !showchannels# !showumodes", me.name, RPL_ENDOFIRCOPS, sptr->name);
         } else {
           char *HelpMsg = NULL;
 
-          if(!strcasecmp(parv[i+1],"!global"))
-            HelpMsg = "!global - All servers are searched";
-          if(!strcasecmp(parv[i+1],"!oper"))
-            HelpMsg = "!oper - Only ircops are shown";
-          if(!strcasecmp(parv[i+1],"!server"))
-            HelpMsg = "!server ____ - Search a different server than the one you are on";
-          if(!strcasecmp(parv[i+1],"!minchan") || !strcasecmp(parv[i+1],"!maxchan"))
-            HelpMsg = "!maxchan/!minchan ____ - Set a max or min number of channels for users to show";
-          if(!strcasecmp(parv[i+1],"!nochan"))
-            HelpMsg = "!nochan - Only show users that aren't in any channels";
-          if(!strcasecmp(parv[i+1],"!showrealhost") || !strcasecmp(parv[i+1],"!showcloakedhost") || !strcasecmp(parv[i+1],"!showvirthost"))
-            HelpMsg = "!showrealhost/!showcloakedhost/!showvirthost - Should be self explanatory";
-          if(!strcasecmp(parv[i+1],"!showserver"))
-            HelpMsg = "!showserver - Display the name of the server the user is on beside their nick";
-          if(!strcasecmp(parv[i+1],"!showumodes"))
-            HelpMsg = "!showumodes - Display the usermodes user has on beside their nick";
-          if(!strcasecmp(parv[i+1],"!showchannels"))
-            HelpMsg = "!showchannels - shows up to 8 channels the user is in";
-          if(!strcasecmp(parv[i+1],"!showchannels#"))
-            HelpMsg = "!showchannels ____ - shows up to ____ channels the user is in";
-          if(!strcasecmp(parv[i+1],"!janusokay"))
-            HelpMsg = "!janusokay - users with / in their nicks are shown too";
-          if(!strcasecmp(parv[i+1],"!onlyjanus"))
-            HelpMsg = "!onlyjanus - only users with / in their nicks are shown";
-          if(!strcasecmp(parv[i+1],"!ulinesokay"))
-            HelpMsg = "!ulinesokay - ulined users are shown too";
-          if(!strcasecmp(parv[i+1],"!onlyulines"))
-            HelpMsg = "!onlyulines - only ulined users are shown";
+          if(!strcasecmp(parv[i+1],"-global"))
+            HelpMsg = "-global - All servers are searched";
+          if(!strcasecmp(parv[i+1],"-oper"))
+            HelpMsg = "-oper - Only ircops are shown";
+          if(!strcasecmp(parv[i+1],"-server"))
+            HelpMsg = "-server <server> - Search a different server than the one you are on";
+          if(!strcasecmp(parv[i+1],"-minchan") || !strcasecmp(parv[i+1],"-maxchan"))
+            HelpMsg = "-max/-min <#> - Set a max or min number of channels for users to show";
+          if(!strcasecmp(parv[i+1],"-nochan"))
+            HelpMsg = "-nochan - Only show users that aren't in any channels";
+          if(!strcasecmp(parv[i+1],"-rhost") || !strcasecmp(parv[i+1],"-chost") || !strcasecmp(parv[i+1],"-vrthost"))
+            HelpMsg = "-rhost/-chost/-vrthost | rhost - Shows the real host / chost - Shows the cloaked host / vrthost - Shows the virtual host";
+          if(!strcasecmp(parv[i+1],"-showserver"))
+            HelpMsg = "-showserver - Display the name of the server the user is on beside their nick";
+          if(!strcasecmp(parv[i+1],"-showumodes"))
+            HelpMsg = "-showumodes - Display the usermodes user has on beside their nick";
+          if(!strcasecmp(parv[i+1],"-topchan"))
+            HelpMsg = "-topchan - shows up to 8 channels the user is in";
+          if(!strcasecmp(parv[i+1],"-chans"))
+            HelpMsg = "-chans <#> - shows up to <#> channels the user is in";
+          if(!strcasecmp(parv[i+1],"-janusokay"))
+            HelpMsg = "-janusokay - users with / in their nicks are shown too";
+          if(!strcasecmp(parv[i+1],"-onlyjanus"))
+            HelpMsg = "-onlyjanus - only users with / in their nicks are shown";
+          if(!strcasecmp(parv[i+1],"-ulinesokay"))
+            HelpMsg = "-ulinesokay - ulined users are shown too";
+          if(!strcasecmp(parv[i+1],"-onlyulines"))
+            HelpMsg = "-onlyulines - only ulined users are shown";
           if(HelpMsg != NULL)
             sendto_one(sptr, ":%s %d %s :Help: %s", me.name, RPL_ENDOFIRCOPS, sptr->name, HelpMsg);
           else

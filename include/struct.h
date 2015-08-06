@@ -175,7 +175,7 @@ typedef unsigned int u_int32_t;	/* XXX Hope this works! */
 #define	USERLEN		10
 #define	REALLEN	 	50
 #define SVIDLEN		30
-#define	TOPICLEN	307
+#define	TOPICLEN	402
 #define	CHANNELLEN	32
 #define	PASSWDLEN 	48	/* was 20, then 32, now 48. */
 #define	KEYLEN		23
